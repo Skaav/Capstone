@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.security.entity.Pc;
 import com.example.demo.security.entity.Sala;
 import com.example.demo.security.repository.SalaRepo;
 
@@ -29,11 +30,18 @@ public class SalaService {
 
      repo.save(s);
      System.out.println();
-     log.info("Sala aggiunta al Database");
-     
+     log.info("Sala aggiunta al Database");  
 
 return s;
 }
+    public List<Sala> findByDisponibile(boolean disponibile) {
+    	
+    	List<Sala> disp = (List<Sala>)repo.findByDisponibile(disponibile);
+    	disp.forEach(i -> log.info(i.toString()));
+    	return disp;
+    }
+    
+    
     public Sala findById(long id) {
         Sala s = repo.findById(id).get();
         System.out.println();
@@ -42,7 +50,7 @@ return s;
     }
     public List<Sala> findAll(){
 
-        List<Sala> s  = (List<Sala>)repo.findAll();
+        List<Sala> s  = repo.findAll();
         System.out.println();
         s.forEach( i -> log.info(i.toString()));
         return s;
@@ -63,7 +71,14 @@ return s;
     	addSala("Sala 2", "Giochi da tavolo", true);
     	addSala("Sala 3", "GDR", true);
     	addSala("Sala 4", "Giochi da tavolo", false);
+    	addSala("Sala 5", "Giochi da tavolo", false);
+    	addSala("Sala 6", "Giochi da tavolo", false);
     	
     }
+public Sala toggleDisponibile(Sala s) {
+	// TODO Auto-generated method stub
+	Sala sa = repo.save(s);
+	return sa;
+}
 
 }

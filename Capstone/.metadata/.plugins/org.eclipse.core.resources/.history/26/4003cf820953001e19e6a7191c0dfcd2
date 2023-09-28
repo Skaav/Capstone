@@ -1,9 +1,0 @@
-package com.example.demo.security.repository;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.example.demo.security.entity.Role;
-
-public interface PcRepo extends JpaRepository<Role, Long> {
-
-}

@@ -1,5 +1,6 @@
 package com.example.demo.security.entity;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -7,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -25,10 +27,11 @@ public class Prenotazione {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idPrenotazione;
 	private String nomeUtente;
-	@ManyToMany
-	private List<Pc> pcList;
-	@ManyToMany
-	private List<Sala> listaSale;
+	@ManyToOne
+	private Pc pc;
+	@ManyToOne
+	private Sala sale;
+	private LocalDate data;
 	private boolean pagamento;
 
 }

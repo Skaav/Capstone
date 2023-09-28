@@ -1,0 +1,80 @@
+package com.example.demo.security.controller;
+
+
+import java.time.LocalDate;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.security.entity.Prenotazione;
+import com.example.demo.security.service.PrenotazioneService;
+
+@RestController
+@RequestMapping("/api/prenotazione")
+@CrossOrigin(origins = "*")
+public class PrenotazioneController {
+
+	@Autowired PrenotazioneService svc;
+
+    @GetMapping("/set")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<List<Prenotazione>> findAll(){
+        System.out.println("ciao");
+        List<Prenotazione> p = svc.findAll();
+        ResponseEntity<List<Prenotazione>> resp = new ResponseEntity<List<Prenotazione>>(p , HttpStatus.OK);
+        return resp;
+    }
+    @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<?> findById(@PathVariable Long id){
+        System.out.println("id funziona");
+        Prenotazione p = svc.findById(id);
+        ResponseEntity<Prenotazione> resp = new ResponseEntity<Prenotazione>(p , HttpStatus.OK);
+        return resp;
+    }
+    @PostMapping("/post/{nomeUtente}")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<?> addPrenotazione(@PathVariable String nomeUtente, @RequestBody LocalDate data){
+
+        Prenotazione p = svc.addPrenota(nomeUtente, data);
+        return new ResponseEntity<Prenotazione>(p, HttpStatus.CREATED);
+
+    }
+    @PutMapping("/pc/{idPrenota}/{idPc}")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<?> prenotaPc(@PathVariable Long idPrenota , @PathVariable Long idPc){
+
+
+        Prenotazione p = svc.prenotaPc(idPrenota, idPc);
+
+        return new ResponseEntity<Prenotazione>(p, HttpStatus.CREATED);
+}
+    @PutMapping("/sala/{idPrenota}/{idSala}")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<?> prenotaSala(@PathVariable Long idPrenota , @PathVariable Long idSala){
+
+
+        Prenotazione p = svc.prenotaSala(idPrenota, idSala);
+
+        return new ResponseEntity<Prenotazione>(p, HttpStatus.CREATED);
+}
+    @GetMapping("/byuser/{nomeUtente}")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<?> findByNomeUtente(String nomeUtente){
+    	List<Prenotazione> p = svc.findByNomeUtente(nomeUtente);
+    	ResponseEntity<List<Prenotazione>> resp = new ResponseEntity<List<Prenotazione>>(p , HttpStatus.OK);
+        return resp;
+    }
+    
+}

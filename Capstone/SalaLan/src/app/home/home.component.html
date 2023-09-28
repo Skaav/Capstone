@@ -1,0 +1,85 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="['/home']">Sala Lan</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/info-pc']">Info-PC</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/info-sale']">Info-Sale</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/prenotazione']">Prenota</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link ml-auto" (click)="logout()">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="caro">
+    <ngb-carousel *ngIf="images">
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+                <img src="../../assets/news-videogiochi-kickstarter-record-2020-videogiochi-giochi-da-tavolo-1608713410202.jpg"
+                    alt="Random first slide" />
+            </div>
+            <div class="carousel-caption">
+                <h3>Tavoli da gioco</h3>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+                <img src="../../assets/scaryrulespmdnd-1521232109.jpg" alt="Random third slide" />
+            </div>
+        </ng-template>
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+                <img src="../../assets/62f1707bcc15bf00182f7a1e.jpg" alt="Random third slide" />
+            </div>
+            <div class="carousel-caption">
+                <h3>Pc da gaming</h3>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+                <img src="../../assets/cyberpunk-2077_qnuL1Qz.jpg" alt="Random second slide" />
+            </div>
+        </ng-template>
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+                <img src="../../assets/gaming-pc-1601949898.jpg" alt="Random third slide" />
+            </div>
+            <div class="carousel-caption">
+            </div>
+        </ng-template>
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+                <img src="../../assets/monster-hunter-world-data-di-uscita-gameplay-trama-rumor-pre-order-collectors-edition-1516209188365.jpg"
+                    alt="Random third slide" />
+            </div>
+            <div class="carousel-caption">
+            </div>
+        </ng-template>
+    </ngb-carousel>
+</div>
+<div class="container">
+    <div class="d-flex flex-wrap flex-column justify-content-between align-items-center mt-5">
+        <div class="col-md-4 d-flex flex-column align-items-center flex-direction-column">
+            <a href="/" class="text-muted text-decoration-none">
+                <svg class="bi" width="30" height="24">
+                    <use xlink:href="#bootstrap"></use>
+                </svg>
+            </a>
+            <span class="text-muted">© 2022 Company, Inc</span>
+            <span class="mb-3 mb-md-0 text-muted">Tel. + 01 234 567 88</span>
+        </div>
+
+    </div>
+</div>

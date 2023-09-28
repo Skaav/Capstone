@@ -33,14 +33,18 @@ public class PcService {
 
 return p;
 }
-    
+    public List<Pc> findByDisponibile(boolean disponibile) {
+    	List<Pc> disp = (List<Pc>)repo.findByDisponibile(disponibile);
+    	disp.forEach(i -> log.info(i.toString()));
+    	return disp;
+    }
     public Pc findById(long id) {
         Pc p = repo.findById(id).get();
         System.out.println();
         log.info(p.toString());
         return p;
     }
-    public List<Pc> findAll(){
+    public List<Pc> findAllPc(){
 
         List<Pc> p  = (List<Pc>)repo.findAll();
         System.out.println();
@@ -63,5 +67,14 @@ return p;
     	addPc("Giallo", "Gaming", false);
     	addPc("Arancione", "Lavoro", true);
     	addPc("Viola", "Lavoro", true);
+    	addPc("Rosso", "Gaming", false);
+    	addPc("Bianco", "Gaming", false);
+    	addPc("Nero", "Gaming", false);
+    	addPc("Verde", "Gaming", false);
     }
+	public Pc toggleDisponibile(Pc pc) {
+		// TODO Auto-generated method stub
+		Pc tr = repo.save(pc);
+		return tr;
+	}
 }

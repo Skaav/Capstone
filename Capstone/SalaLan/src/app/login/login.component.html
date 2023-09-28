@@ -1,0 +1,24 @@
+<div class="container">
+    <div *ngIf="error" class="error-message">
+        <p class="errorcolor">{{ error }}</p>
+    </div>
+    <div class="row justify-content-center mt-3">
+
+        <form #f="ngForm" (ngSubmit)="submit()">
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Username</label>
+                <input ngModel required type="text" name="username" class="form-control" id="username">
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input ngModel required type="password" name="password" class="form-control" id="password">
+            </div>
+            <button type="submit" class="btn btn-dark mx-2">Login</button>
+            <button type="submit" class="btn btn-dark mx-2" [routerLink]="['/register']">Registrati</button>
+
+        </form>
+
+    </div>
+</div>

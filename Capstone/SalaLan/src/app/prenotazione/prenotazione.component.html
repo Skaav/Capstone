@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="['/home']">Sala Lan</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/info-pc']">Info-PC</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/info-sale']">Info-Sale</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/prenotazione']">Prenota</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link ml-auto" (click)="logout()">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div *ngIf="dataZone == false && spazioZone == false">
+    <button class="btn btn-primary" (click)="startPrenotazione()">Nuova prenotazione</button>
+    <div class="card" *ngFor="let prenotazione of prenotazioni" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{prenotazione.nomeUtente}}</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+            <a [routerLink]="['/prenotazione']" class="btn btn-primary">Prenotazione</a>
+        </div>
+    </div>
+</div>
+<div *ngIf="dataZone == true">
+    <form #f="ngForm" (ngSubmit)="selectDate()">
+        <label class="active" for="dateStandard">Data</label>
+        <input ngModel required type="date" id="dateStandard" name="dateStandard">
+        <button type="submit" class="btn">Seleziona questa data!</button>
+    </form>
+</div>
+<div *ngIf="spazioZone == true">
+
+    <button (click)="selectPc()" class="btn">Lista PC</button>
+    <button (click)="selectSala()" class="btn">Lista Sala</button>
+
+    <div *ngIf="pcZone == true">
+        <form #z="ngForm" (ngSubmit)="selectPostazionePc()">
+            <select ngModel required id="pc" name="pc" class="form-select" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option *ngFor="let pc of pcs" value="{{pc.pcId}}">{{pc.nomeColore}}</option>
+            </select>
+            <button type="submit" class="btn">Seleziona questa postazione!</button>
+        </form>
+    </div>
+
+    <div *ngIf="salaZone == true">
+        <form #y="ngForm" (ngSubmit)="selectPostazioneSala()">
+            <select ngModel required id="sale" name="sale" class="form-select" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option *ngFor="let sala of sale" value="{{sala.salaId}}">{{sala.nome}}</option>
+            </select>
+            <button type="submit" class="btn">Seleziona questa postazione!</button>
+        </form>
+    </div>
+</div>
+<!-- <div *ngIf="prenotaAltro == true">
+    <button (click)="startPrenotazione()" type="submit" class="btn">Vuoi prenotare altro?</button>
+</div> -->
+<!--(onsubmit)="addPrenotazione()"-->
+
+
+<!--timeZone da creare nelle component e da implementare-->
+<!-- <div *ngIf="timeZone == true">
+    <form #f="ngForm">
+        <label class="active" for="timeStandard">Ora</label>
+        <input ngModel required type="time" id="timeStandard" class="form-control">
+        <button type="submit" class="btn">Seleziona questo orario!</button>
+    </form>
+</div> -->
