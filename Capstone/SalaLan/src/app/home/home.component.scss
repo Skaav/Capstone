@@ -4,7 +4,7 @@
     align-items: center;
     height: 100%;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 .picsum-img-wrapper img {
@@ -12,4 +12,31 @@
     /* Imposta la larghezza delle immagini al 100% del loro contenitore */
     height: auto;
     /* Mantieni il rapporto di aspetto originale */
+}
+
+#footer {
+    width: 100%;
+    padding: 0px;
+    margin-right: 0;
+    background-color: rgb(34, 37, 40);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 999;
+    // background-color: rgb(8, 82, 167, 0.5);
+}
+
+.testo-piccolo {
+    font-size: 12px;
+}
+
+.Copy {
+    background-color: rgb(34, 37, 40);
+    padding: 0px;
+    margin-right: 0;
+}
+
+#link {
+    color: white;
+    text-decoration: none;
 }

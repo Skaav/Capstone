@@ -73,7 +73,7 @@ public class PrenotazioneController {
     
     @GetMapping("/byuser/{nomeUtente}")
     @PreAuthorize("isAuthenticated()")
-    public ResponseEntity<?> findByNomeUtente(String nomeUtente){
+    public ResponseEntity<?> findByNomeUtente(@PathVariable String nomeUtente){
     	List<Prenotazione> p = svc.findByNomeUtente(nomeUtente);
     	ResponseEntity<List<Prenotazione>> resp = new ResponseEntity<List<Prenotazione>>(p , HttpStatus.OK);
         return resp;

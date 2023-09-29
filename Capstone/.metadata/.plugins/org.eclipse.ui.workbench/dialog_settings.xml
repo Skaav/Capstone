@@ -24,4 +24,6 @@
 			<item value="zoom"/>
 		</list>
 	</section>
+	<section name="ImportExportAction">
+	</section>
 </section>

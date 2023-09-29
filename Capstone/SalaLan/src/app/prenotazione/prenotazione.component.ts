@@ -19,6 +19,7 @@ export class PrenotazioneComponent implements OnInit {
   sale: ISala[] = [];
   pcs: IPc[] = [];
   prenotazioni: IPrenotazione[] = [];
+  per: any[] = [];
   prenotazioneCorrente: IPrenotazione = {};
   dataZone: boolean = false;
   data: Date = new Date();
@@ -38,6 +39,19 @@ export class PrenotazioneComponent implements OnInit {
     this.getByUsers();
     this.getAllSaleDiponibili();
     this.getAllPcDisponibili();
+  }
+  // wafdawfaw
+  getPcName(per: any): string {
+    if (per.pc) {
+      return per.pc.nomeColore;
+    }
+    return 'Nessuna sala prenotata!'; // Se né PC né Sala sono presenti
+  }
+  getSalaName(per: any): string {
+    if (per.sale) {
+      return per.sale.nome;
+    }
+    return 'Nessun pc prenotato!'; // Se né PC né Sala sono presenti
   }
 
   logout() {
@@ -112,6 +126,7 @@ export class PrenotazioneComponent implements OnInit {
         console.log(resp);
         this.error = undefined;
         this.prenotazioneCorrente = resp;
+        this.getByUsers();
       }, err => {
         console.log(err.error.message);
         this.error = err.error.message;
@@ -131,6 +146,7 @@ export class PrenotazioneComponent implements OnInit {
         console.log(resp);
         this.error = undefined;
         this.prenotazioneCorrente = resp;
+        this.getByUsers();
       }, err => {
         console.log(err.error.message);
         this.error = err.error.message;
@@ -175,4 +191,6 @@ export class PrenotazioneComponent implements OnInit {
       }
     )
   }
+
+
 }
