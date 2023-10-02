@@ -97,5 +97,27 @@ public class PrenotazioneService {
     	List<Prenotazione> nu = repo.findByNomeUtente(nomeUtente);
     	return nu;
     }
+    
+    @Transactional
+    public void deletePrenotazione(Long idPrenotazione) {
+        Prenotazione prenotazione = repo.findById(idPrenotazione).orElse(null);
+        if (prenotazione != null) {
+           
+            Pc pc = prenotazione.getPc();
+            if (pc != null) {
+                pc.setDisponibile(true);
+                pcSvc.toggleDisponibile(pc);
+            }
+
+            
+            Sala sala = prenotazione.getSale();
+            if (sala != null) {
+                sala.setDisponibile(true);
+                slSvc.toggleDisponibile(sala);
+            }
+
+            repo.deleteById(idPrenotazione);
+        }
+    }
 
 }

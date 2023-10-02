@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: 'info-pc', loadChildren: () => import('./info-pc/info-pc.module').then(m => m.InfoPcModule), canActivate: [GuardGuard] },
   { path: 'info-sale', loadChildren: () => import('./info-sale/info-sale.module').then(m => m.InfoSaleModule), canActivate: [GuardGuard] },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'prenotazione', loadChildren: () => import('./prenotazione/prenotazione.module').then(m => m.PrenotazioneModule) }, // Reindirizzamento predefinito a "home"
+  { path: 'prenotazione', loadChildren: () => import('./prenotazione/prenotazione.module').then(m => m.PrenotazioneModule) },
+  { path: 'aboutus', loadChildren: () => import('./aboutus/aboutus.module').then(m => m.AboutusModule) }, // Reindirizzamento predefinito a "home"
 ];
 
 @NgModule({

@@ -37,7 +37,7 @@ export class PrenotazioneComponent implements OnInit {
 
   ngOnInit(): void {
     this.getByUsers();
-    this.getAllSaleDiponibili();
+    this.getAllSaleDisponibili();
     this.getAllPcDisponibili();
   }
   // wafdawfaw
@@ -167,7 +167,7 @@ export class PrenotazioneComponent implements OnInit {
     );
   }
 
-  getAllSaleDiponibili() {
+  getAllSaleDisponibili() {
     this.s.findSalaDisponibili().subscribe(
       resp => {
         console.log(resp);
@@ -191,6 +191,22 @@ export class PrenotazioneComponent implements OnInit {
       }
     )
   }
+  deletePrenotazione(idPrenotazione: number) {
+    this.u.deletePrenotazione(idPrenotazione).subscribe(
+      () => {
+        // La prenotazione è stata eliminata con successo
+        // Ora aggiorna la lista di prenotazioni e le disponibilità di PC e sale
+        this.getByUsers();
+        this.getAllSaleDisponibili();
+        this.getAllPcDisponibili();
+      },
+      (err) => {
+        console.log(err);
+        // Gestisci eventuali errori
+      }
+    );
+  }
+
 
 
 }

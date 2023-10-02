@@ -4,7 +4,11 @@
     align-items: center;
     height: 100%;
     width: 100%;
-    margin-top: 50px;
+    margin-top: 25px;
+}
+
+.boh {
+    color: white;
 }
 
 .picsum-img-wrapper img {
@@ -24,6 +28,10 @@
     width: 100%;
     z-index: 999;
     // background-color: rgb(8, 82, 167, 0.5);
+}
+
+.main-container {
+    padding-bottom: 100px;
 }
 
 .testo-piccolo {

@@ -49,5 +49,14 @@ export class PrenotazioneService {
     return this.http.put(apiUrl, {}, { headers: this.headers })
   }
 
+  deletePrenotazione(idPrenotazione: number) {
+    this.headers = this.headers.set(
+      'Authorization',
+      'Bearer ' + this.usvc.getAccesToken()
+    );
+    const apiUrl = 'http://localhost:8080/api/prenotazione/' + idPrenotazione;
+    return this.http.delete(apiUrl, { headers: this.headers });
+  }
+
 
 }
