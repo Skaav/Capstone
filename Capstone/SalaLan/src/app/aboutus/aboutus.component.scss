@@ -10,12 +10,25 @@
     // background-color: rgb(8, 82, 167, 0.5);
 }
 
+.boh {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin-top: 150px;
+    /* Imposta l'altezza al 100% della viewport (visualizzazione) */
+}
+
 .main-container {
     padding-bottom: 100px;
 }
 
 .testo-piccolo {
     font-size: 12px;
+}
+
+p {
+    font-size: 18px;
 }
 
 .Copy {
